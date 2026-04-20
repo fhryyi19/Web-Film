@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rekomendasi Film — Modern</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="home.css" />
+
+  <!-- Meta for nicer mobile appearance -->
+  <meta name="theme-color" content="#0f172a" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">🎬</div>
+        <div>
+          <h1>Rekomendasi Film</h1>
+          <p class="tag">Cari, saring, dan simpan favorit kamu — tampil seperti web profesional</p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="search-wrap">
+          <input id="searchInput" type="search" placeholder="Cari judul, aktor, atau kata kunci..." autocomplete="off" />
+          <div id="suggestions" class="suggestions hidden"></div>
+        </div>
+
+        <div class="actions">
+          <select id="sortBy" title="Sortir">
+            <option value="popular">Rekomendasi</option>
+            <option value="rating">Rating</option>
+            <option value="year">Tahun</option>
+            <option value="runtime">Runtime</option>
+          </select>
+          <button id="favoritesBtn" class="ghost">Favorit</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <aside class="sidebar">
+        <div class="card glass">
+          <h3>Filter</h3>
+          <label>Min Rating</label>
+          <input id="minRating" type="range" min="0" max="10" step="0.5" value="0" />
+          <div class="range-value"><span id="minRatingValue">0</span> ★</div>
+
+          <h4 class="mt">Genre</h4>
+          <div id="genreButtons" class="genres"></div>
+
+          <button id="resetBtn" class="primary outline mt">Reset Filter</button>
+        </div>
+
+        <div class="card">
+          <h4>Top Picks</h4>
+          <ul id="topPicks" class="top-list"></ul>
+        </div>
+
+        <div class="card">
+          <h4>Tentang</h4>
+          <p>Web ini menggunakan API TMDB untuk menampilkan data film nyata. Fitur: pencarian, filter, favorit, lazy load, dan modal detail.</p>
+        </div>
+      </aside>
+
+      <section class="grid-section">
+        <div id="moviesList" class="movies-grid"></div>
+
+        <div class="load-more-wrap">
+          <button id="loadMore" class="primary">Muat Lebih Banyak</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="modal hidden">
+      <div class="modal-panel">
+        <button class="modal-close" id="modalClose">✕</button>
+        <div id="modalInner"></div>
+      </div>
+    </div>
+
+    <!-- Tiny sticky toast for feedback -->
+    <div id="toast" class="toast hidden"></div>
+
+    <footer class="footer">
+      © <span id="year"></span> — Rekomendasi Film • Built for School Project
+    </footer>
+  </div>
+
+  <script src="home.js" defer></script>
+</body>
+</html>
